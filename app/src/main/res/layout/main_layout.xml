@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/imageView1_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+
+            <ImageView
+                android:id="@+id/imageView1_2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView1_3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView1_4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView1_5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView1_6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView1_7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/imageView2_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+
+            <ImageView
+                android:id="@+id/imageView2_2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView2_3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView2_4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView2_5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView2_6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView2_7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        <ImageView
+            android:id="@+id/imageView3_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+
+        <ImageView
+            android:id="@+id/imageView3_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView3_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView3_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView3_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView3_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView3_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+
+    </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        <ImageView
+            android:id="@+id/imageView4_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+
+        <ImageView
+            android:id="@+id/imageView4_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView4_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView4_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView4_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView4_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+        <ImageView
+            android:id="@+id/imageView4_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/chip1" />
+    </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <ImageView
+                android:id="@+id/imageView5_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+
+            <ImageView
+                android:id="@+id/imageView5_2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView5_3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView5_4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView5_5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView5_6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView5_7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <ImageView
+                android:id="@+id/imageView6_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+
+            <ImageView
+                android:id="@+id/imageView6_2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView6_3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView6_4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView6_5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView6_6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView6_7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <ImageView
+                android:id="@+id/imageView7_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+
+            <ImageView
+                android:id="@+id/imageView7_2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView7_3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView7_4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView7_5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView7_6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView7_7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <ImageView
+                android:id="@+id/imageView8_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+
+            <ImageView
+                android:id="@+id/imageView8_2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView8_3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView8_4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView8_5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView8_6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+            <ImageView
+                android:id="@+id/imageView8_7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chip1" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
