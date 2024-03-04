@@ -3,6 +3,7 @@ package com.example.match3
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -54,6 +55,7 @@ class MainActivity : ComponentActivity() {
     val chipImageMatrix = Array(rows) { Array<ImageView?>(columns) { null } }
 
     val array = Array(rows) { Array(columns) { Random.nextInt(1, 5) } }
+    val arrayMoving = Array(rows) { Array(columns) { false } }
 
     var currentX = -1
     var currentY = -1
@@ -126,6 +128,27 @@ class MainActivity : ComponentActivity() {
         chipImageMatrix[7][6] = this.findViewById<ImageView?>(R.id.imageView8_7)
 
         setListeners()
+
+
+        val button1 = this.findViewById<Button?>(R.id.button)
+        val button2 = this.findViewById<Button?>(R.id.button2)
+
+        button1.setOnClickListener {
+            solveMatches(true)
+            updateImages()
+        }
+
+        button2.setOnClickListener {
+            clearWithAnimation(false)
+            updateImages()
+        }
+/*
+        while (isMatch(array))
+        {
+            solveMatches(true)
+            clearImmediately()
+            fillRandom(true)
+        }*/
         updateImages()
     }
 
@@ -152,9 +175,282 @@ class MainActivity : ComponentActivity() {
         array[y2][x2]=c
     }
 
-    fun solveMatches()
+    fun solveMatches(immediately:Boolean)
     {
-        
+        val solving = Array(rows) { Array(columns) { 0 } }
+
+        for (y in 0 until rows) {
+            var x = 0
+            while (x < columns-1)
+            {
+                if (array[y][x] == array[y][x+1] && array[y][x] != 0 && arrayMoving[y][x] == false)
+                {
+                    var i = 1
+                    while (x + i < columns && array[y][x] == array[y][x+i] && arrayMoving[y][x+i] == false)
+                    {
+                        i++
+                    }
+
+                    if (i >= 3)
+                    {
+                        for (j in x until x+i)
+                        {
+                            solving[y][j] = 1
+                        }
+                    }
+                    x = x + i
+
+                }
+                else
+                {
+                    x = x + 1
+                }
+            }
+        }
+
+
+        for (x in 0 until columns) {
+            var y = 0
+            while (y < rows-1)
+            {
+                if (array[y][x] == array[y+1][x] && array[y][x] != 0 && arrayMoving[y][x] == false)
+                {
+                    var i = 1
+                    while (y + i < rows && array[y][x] == array[y+i][x] && arrayMoving[y+i][x] == false)
+                    {
+                        i++
+                    }
+
+                    if (i >= 3)
+                    {
+                        for (j in y until y+i)
+                        {
+                            solving[j][x] = 1
+                        }
+                    }
+                    y = y + i
+
+                }
+                else
+                {
+                    y = y + 1
+                }
+            }
+        }
+
+        for (y in 0 until rows) {
+            for (x in 0 until columns) {
+                if (solving[y][x] == 1)
+                {
+                    array[y][x] = 0
+                }
+            }
+        }
+    }
+
+    fun clearImmediately()
+    {
+
+            for (x in 0 until columns) {
+
+                var swapped = true
+                while(swapped) {
+                    swapped = false
+                    for (y in 0 until rows - 1) {
+
+                        if (array[y][x] != 0 && array[y + 1][x] == 0) {
+                            val c = array[y][x]
+                            array[y][x] = array[y + 1][x]
+                            array[y + 1][x] = c
+                            swapped = true
+                        }
+                    }
+                }
+            }
+
+    }
+
+    fun clearWithAnimation(immediately: Boolean)
+    {
+
+        for (x in 0 until columns) {
+
+            var y = rows-1
+            while (y > 0)
+            {
+                if (array[y][x] == 0)
+                {
+                    var j = 1
+                    while ((y-j) > 0 && array[y-j][x] == 0)
+                    {
+                        j++
+                    }
+
+                    if (y-j >= 0) {
+                        //y-j is the first point
+                        if (immediately) {
+                            array[y][x] = array[y - j][x]
+                            array[y - j][x] = 0
+                        }
+                        else{
+                            array[y][x] = array[y - j][x]
+                            array[y - j][x] = 0
+                            gracefullyFall(x, y, j)
+                            arrayMoving[y][x] = true
+                        }
+                    }
+                    y--
+                }
+                else{
+                    y--
+                }
+            }
+        }
+    }
+
+    fun gracefullyFall(x: Int, y: Int, diff: Int)
+    {
+
+        val imageView1 = chipImageMatrix[y][x]
+
+        val translateAnimation1 = TranslateAnimation(
+            0.0f,
+            0.0f,
+            -150.0f*diff,
+            0.0f
+        )
+
+        translateAnimation1.duration = 100 * diff.toLong()
+
+        translateAnimation1.zAdjustment = Animation.ZORDER_TOP
+
+        translateAnimation1.startOffset = 0
+
+        translateAnimation1.repeatCount = 2
+
+        translateAnimation1.interpolator = android.view.animation.LinearInterpolator()
+
+        translateAnimation1.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {
+            }
+
+            override fun onAnimationEnd(animation: Animation?) {
+
+            }
+
+            override fun onAnimationRepeat(animation: Animation?) {
+                animation?.cancel()
+                arrayMoving[y][x] = false
+                solveMatches(true)
+                //updateImages()
+                clearWithAnimation(false)
+                updateImages()
+            }
+        })
+
+        imageView1?.startAnimation(translateAnimation1)
+
+    }
+
+    fun fillRandom(immediately: Boolean)
+    {
+        for (y in 0 until rows) {
+            for (x in 0 until columns) {
+                if (array[y][x] == 0)
+                {
+                    if (immediately)
+                    {
+                        array[y][x] = Random.nextInt(1, 5)
+                    }
+                    else
+                    {
+                        // ...
+                    }
+                }
+
+            }
+        }
+    }
+
+    fun isMatch(forArray: Array<Array<Int>>) : Boolean
+    {
+        for (y in 0 until rows) {
+            var x = 0
+            while (x < columns-1)
+            {
+                if (forArray[y][x] == forArray[y][x+1] && forArray[y][x] != 0)
+                {
+                    var i = 1
+                    while (x + i < columns && forArray[y][x] == forArray[y][x+i])
+                    {
+                        i++
+                    }
+
+                    if (i >= 3)
+                    {
+                        for (j in x until x+i)
+                        {
+                            return true
+                        }
+                    }
+                    x = x + i
+
+                }
+                else
+                {
+                    x = x + 1
+                }
+            }
+        }
+
+        for (x in 0 until columns) {
+            var y = 0
+            while (y < rows-1)
+            {
+                if (forArray[y][x] == forArray[y+1][x] && forArray[y][x] != 0)
+                {
+                    var i = 1
+                    while (y + i < rows && forArray[y][x] == forArray[y+i][x])
+                    {
+                        i++
+                    }
+
+                    if (i >= 3)
+                    {
+                        for (j in y until y+i)
+                        {
+                            return true
+                        }
+                    }
+                    y = y + i
+
+                }
+                else
+                {
+                    y = y + 1
+                }
+            }
+        }
+
+        return false
+    }
+
+    fun arrayWithSwappedValues(fromArr: Array<Array<Int>>, x1: Int, y1 : Int, x2: Int, y2:Int) : Array<Array<Int>>
+    {
+        val result = Array(rows) { Array(columns) { 0 } }
+
+        for (x in 0 until columns)
+        {
+            for (y in 0 until rows)
+            {
+                result[y][x] = array[y][x]
+            }
+        }
+
+        var c = result[y1][x1]
+        result[y1][x1] = result[y2][x2]
+        result[y2][x2] = c
+        return result
     }
 
     fun startAnimationLeftRight(x1: Int, y1: Int, x2: Int, y2: Int)
@@ -185,6 +481,9 @@ class MainActivity : ComponentActivity() {
             override fun onAnimationRepeat(animation: Animation?) {
                 animation?.cancel()
                 swap(x1,y1, x2, y2)
+                solveMatches(true)
+                //updateImages()
+                clearWithAnimation(false)
                 updateImages()
             }
         })
@@ -400,6 +699,9 @@ class MainActivity : ComponentActivity() {
             override fun onAnimationRepeat(animation: Animation?) {
                 animation?.cancel()
                 swap(x1,y1, x2, y2)
+                solveMatches(true)
+                //updateImages()
+                clearWithAnimation(false)
                 updateImages()
             }
         })
@@ -447,27 +749,57 @@ class MainActivity : ComponentActivity() {
                 val imageView = chipImageMatrix[y][x] ?: continue
                   imageView.setOnClickListener {
 
+
+
                       if(x==currentX+1 && y==currentY)
                       {
-                          startAnimationLeftRightFail(x,y, currentX, currentY)
+                          if (isMatch(arrayWithSwappedValues(array, x, y, currentX, currentY)))
+                          {
+                              startAnimationLeftRight(x,y,currentX, currentY)
+                          }
+                          else
+                          {
+                              startAnimationLeftRightFail(x,y, currentX, currentY)
+                          }
                           currentX = -1
                           currentY = -1
                       }
                       else if(x==currentX-1 && y==currentY)
                       {
-                          startAnimationLeftRightFail(currentX, currentY, x, y)
+                          if (isMatch(arrayWithSwappedValues(array, currentX, currentY, x, y)))
+                          {
+                              startAnimationLeftRight(currentX, currentY, x, y)
+                          }
+                          else
+                          {
+                              startAnimationLeftRightFail(currentX, currentY, x, y)
+                          }
                           currentX = -1
                           currentY = -1
                       }
                       else if(x==currentX && y==currentY+1)
                       {
-                          startAnimationTopBottomFail(x, y, currentX, currentY)
+                          if (isMatch(arrayWithSwappedValues(array, x, y, currentX, currentY)))
+                          {
+                              startAnimationTopBottom(x,y,currentX, currentY)
+                          }
+                          else
+                          {
+                              startAnimationTopBottomFail(x,y, currentX, currentY)
+                          }
                           currentX = -1
                           currentY = -1
                       }
                       else if(x==currentX && y==currentY-1)
                       {
-                          startAnimationTopBottomFail(currentX, currentY, x, y)
+                          if (isMatch(arrayWithSwappedValues(array, currentX, currentY, x, y)))
+                          {
+                              startAnimationTopBottom(currentX, currentY, x, y)
+                          }
+                          else
+                          {
+                              startAnimationTopBottomFail(currentX, currentY,  x, y)
+                          }
                           currentX = -1
                           currentY = -1
                       }
